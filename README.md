@@ -1,2 +1,3 @@
-# aws-service-catalog-portfolio
-A sample AWS Service Catalog Portfolio
+# AWS Service Catalog Portfolio
+
+A sample AWS Service Catalog Portfolio with an example product for GitHub Actions Role/OIDC configuration.
