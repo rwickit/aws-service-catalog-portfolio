@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Shared Service Catalog Portfolio"
+
+Resources:
+  ## Portfolio Configuration
+
+  Portfolio:
+    Type: "AWS::ServiceCatalog::Portfolio"
+    Properties:
+      DisplayName: "Shared Products"
+      ProviderName: "RWickIT"
+      Description: "Shared resources provided in support of all products and services"
+      AcceptLanguage: "en"
+
+  Product:
+    Type: "AWS::ServiceCatalog::CloudFormationProduct"
+    Properties:
+      Name: "GitHub Actions OIDC IDP & Role"
+      Description: "Deploys an OIDC IDP and Role (with trust) for use with GitLHub and projects in a specific Group or Project"
+      Owner: "RWickIT"
+      Distributor: "RWickIT"
+      SupportEmail: "ross@rosswickman.com"
+      SupportDescription: 'Please review the resource project readme for more information.'
+      SupportUrl: "https://github.com/rwickit/aws-github-cicd"
+      ProvisioningArtifactParameters:
+        - Name: "20230204"
+          Description: "GitHub Actions - OIDC IDP and associated Roles for Full CICD"
+          DisableTemplateValidation: false
+          Info:
+            LoadTemplateFromURL: "https://s3.us-east-2.amazonaws.com/solutions.rwick.it/github-cicd/role-github-cicd.yml"
+
+  ProductAssociation:
+    Type: "AWS::ServiceCatalog::PortfolioProductAssociation"
+    Properties:
+      PortfolioId: !Ref Portfolio
+      ProductId: !Ref Product
